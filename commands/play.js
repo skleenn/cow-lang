@@ -44,7 +44,7 @@ module.exports = {
             await interaction.reply("you must be in a vc to use this command!")
             return;
         }
-        const queue = await client.player.createQueue(interaction.guild);
+        const queue = await client.player.nodes.create(interaction.guild);
 
         if(!queue.connection) await queue.connect(interaction.member.voice.channel)
 
@@ -53,7 +53,7 @@ module.exports = {
             let url = interaction.options.getStringOption("url");
             const result = await client.player.search(url, {
                 requestedBy: interaction.user,
-                searchEngine: QueryType.SPOTIFY_SONG,
+                searchEngine: QueryType.YOUTUBE_VIDEO,
             });
 
             if(result.tracks.length === 0){
