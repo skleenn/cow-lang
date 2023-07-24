@@ -48,7 +48,7 @@ module.exports = {
 
         if(!queue.connection) await queue.connect(interaction.member.voice.channel)
 
-        let embed = new MessageEmbed();
+        let embed = new Discord.MessageEmbed();
         if(interaction.options.getSubcommand() == "song"){
             let url = interaction.options.getStringOption("url");
             const result = await client.player.search(url, {
