@@ -70,7 +70,7 @@ module.exports = {
                 .setFooter({text: `Duration: ${song.duration}`});
         }
         else if(interaction.options.getSubcommand() == "playlist"){
-            let url = interaction.options.getString("url");
+            let url = interaction.options.getStringOptions("url");
             const result = await client.player.search(url, {
                 requestedBy: interaction.user,
                 searchEngine: QueryType.SPOTIFY_PLAYLIST,
