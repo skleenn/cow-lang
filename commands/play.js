@@ -20,7 +20,7 @@ module.exports = {
         .addSubcommand(subcommand => 
             subcommand
                 .setName("playlist")
-                .setDescription("plays a playlist from YT")
+                .setDescription("plays a playlist from spotify")
                 .addStringOption(option => 
                     option 
                         .setName("url")
@@ -31,7 +31,7 @@ module.exports = {
         .addSubcommand(subcommand => 
             subcommand 
                 .setName("song")
-                .setDescription("plays a song from YT")
+                .setDescription("plays a song from spotify")
                 .addStringOption(option => 
                     option
                         .setName("url")
@@ -53,7 +53,7 @@ module.exports = {
             let url = interaction.options.getString("url");
             const result = await client.player.search(url, {
                 requestedBy: interaction.user,
-                searchEngine: QueryType.YOUTUBE_VIDEO,
+                searchEngine: QueryType.SPOTIFY_SONG,
             });
 
             if(result.tracks.length === 0){
@@ -70,7 +70,7 @@ module.exports = {
                 .setFooter({text: `Duration: ${song.duration}`});
         }
         else if(interaction.options.getSubcommand() == "playlist"){
-            let url = interaction.options.getStringOption("url");
+            let url = interaction.options.getString("url");
             const result = await client.player.search(url, {
                 requestedBy: interaction.user,
                 searchEngine: QueryType.SPOTIFY_PLAYLIST,
@@ -90,7 +90,7 @@ module.exports = {
                 .setFooter({text: `Duration: ${playlist.duration}`});
         }
         else if(interaction.options.getSubcommand() == "search"){
-            let url = interaction.options.getStringOption("searchterms");
+            let url = interaction.options.getString("searchterms");
             const result = await client.player.search(url, {
                 requestedBy: interaction.user,
                 searchEngine: QueryType.AUTO,
