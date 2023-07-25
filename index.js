@@ -31,7 +31,8 @@ client.player = new Player(client, {
     ytdlOptions: {
         quality: "highestaudio",
         highWaterMark: 1 << 25
-    }
+    },
+    plugins: {spotify: new SpotifyExtractor(),},
 });
 
 client.on("ready", () => {
