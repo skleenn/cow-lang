@@ -50,7 +50,7 @@ module.exports = {
 
         let embed = new EmbedBuilder();
         if(interaction.options.getSubcommand() == "song"){
-            let url = interaction.options.getStringOption("url");
+            let url = interaction.options.getString("url");
             const result = await client.player.search(url, {
                 requestedBy: interaction.user,
                 searchEngine: QueryType.YOUTUBE_VIDEO,
